@@ -1,12 +1,52 @@
 @charset "utf-8";
 
-html {}
+html {
+    font-size: 100%;
+}
 
 body {}
 
 /* header */
 header {
     background: #186AC9;
+}
+
+#head {
+    display: flex;
+    justify-content: space-between;
+}
+
+#head-content {
+    display: flex;
+}
+
+ul {
+    display: ;
+}
+
+nav {
+    position: relative;
+}
+
+nav::before {
+    content: "^";
+    position: absolute;
+}
+
+nav.active::before {
+    content: "^";
+}
+
+.btn {
+    border-radius: 5px;
+    background-color: #186AC9;
+    text-align: center;
+    font-size: 0.5rem;
+}
+
+.btn a {
+    font-weight: thin;
+    color: #fff;
 }
 
 
