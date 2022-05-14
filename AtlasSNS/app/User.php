@@ -27,7 +27,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function Posts(){
-        return $this->belongsToMany('App\Post');
+     public function following(){
+        return $this->belongsToMany('App\User','follows','following_id','followed_id');
+    }
+
+    public function followed(){
+        return $this->belongsToMany('App\User','follows','following_id','followed_id');
     }
 }
