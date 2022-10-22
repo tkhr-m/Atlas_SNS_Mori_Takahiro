@@ -8,6 +8,8 @@
     <title></title>
     <link rel="stylesheet" href="{{ asset('css/reset.css') }} ">
     <link rel="stylesheet" href="{{ asset('css/style.css') }} ">
+    <script src = "https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src = "js/script.js"></script>
     <!--スマホ,タブレット対応-->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <!--サイトのアイコン指定-->
@@ -22,18 +24,26 @@
 <body>
     <header>
         <div id = "head">
-        <h1><a href = /top><img src="images/atlas.png"></a></h1>
+          <h1><a href = /index><img src="images/atlas.png"></a></h1>
             <div id="head-content">
-                <div id=user-name">
-                    <p>{{$session_data->username}}さん<img src="images/icon1.png"></p>
+                <div id="user-name">
+                    <p>{{$user->username}}さん<img src="images/{{$user->image}}"></p>
+                    <span></span>
+                    <span></span>
                 <div>
-               <nav class="menu">
-                <ul>
-                    <li><a href="/top">ホーム</a></li>
-                    <li><a href="/profile">プロフィール</a></li>
-                    <li><a href="/login">ログアウト</a></li>
-                </ul>
-               </nav>
+
+                <div class = "menu-wrap" >
+                    <div>
+                        <p><a href="/index">HOME</a></a></p>
+                    </div>
+                    <div>
+                        <p><a href="/profile">プロフィール編集</a></p>
+                    </div>
+                    <div>
+                        <p><a href="/login">ログアウト</a></p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </header>
@@ -43,7 +53,7 @@
         </div >
         <div id="side-bar">
             <div id="confirm">
-                <p>{{$session_data->username}}さんの</p>
+                <p>{{$user->username}}さんの</p>
                 <div>
                 <p>フォロー数</p>
                 <p>〇〇名</p>
@@ -55,7 +65,7 @@
                 </div>
                 <p class="btn"><a href="/follower-list">フォロワーリスト</a></p>
             </div>
-            <p class="btn"><a href="">ユーザー検索</a></p>
+            <p class="btn"><a href="/search">ユーザー検索</a></p>
         </div>
     </div>
     <footer>

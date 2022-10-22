@@ -5,17 +5,20 @@
   <form action = '/search' method = 'post'>
     @csrf
     <input type = 'text' name = 'search' placeholder = 'ユーザー名' required>
-    <input type = 'submit' value = '検索'>
+    <input type = 'image' src = 'images/post.png'>
   </form>
-</div>
-<div>
-  @foreach($other_users as $another_user)
-  <div>
-    <p><img src="images/{{$another_user->image}}">{{$another_user->username}}</p>
-  </div>
-  @endforeach
+  <p>検索ワード：{{$search_word}}</p>
 </div>
 
+
+<div>
+  @foreach($search_users as $search_user)
+   <div>
+   <p> <img src='images/{{$search_user->image}}'>{{$search_user->username}}</p>
+
+   </div>
+  @endforeach
+</div>
 
 
 @endsection

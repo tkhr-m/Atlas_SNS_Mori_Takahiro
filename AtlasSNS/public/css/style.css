@@ -20,34 +20,32 @@ header {
     display: flex;
 }
 
-ul {
-    display: ;
-}
-
-nav {
-    position: relative;
-}
-
-nav::before {
-    content: "^";
-    position: absolute;
-}
-
-nav.active::before {
-    content: "^";
+#user-name span {
+    width: 100%;
+    border: solid 1px;
 }
 
 .btn {
+    width: 100px;
+    height: 20px;
     border-radius: 5px;
     background-color: #186AC9;
     text-align: center;
     font-size: 0.5rem;
+    margin: 20px auto;
 }
 
 .btn a {
     font-weight: thin;
     color: #fff;
 }
+
+#side-bar #confirm .btn {
+    margin: 0 0 0 auto;
+}
+
+
+
 
 
 
@@ -64,4 +62,41 @@ nav.active::before {
 #side-bar {
     flex: 0 0 19%;
     border-left: 1px solid #727272;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: grey;
+    opacity: .5;
+    display: none;
+}
+
+.overlay.active {
+    display: block;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 50%;
+    background: #fff;
+    display: none;
+}
+
+.modal.open {
+    display: block;
+}
+
+button img.edit {
+    display: block;
+    width: 30px;
+    height: 30px;
 }

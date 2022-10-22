@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/top';
+    protected $redirectTo = '/index';
 
     /**
      * Create a new controller instance.
@@ -43,9 +43,9 @@ class LoginController extends Controller
             // ログインが成功したら、トップページへ
             //↓ログイン条件は公開時には消すこと
             if(Auth::attempt($data)){
-                $user = Auth::user();
-                $request->session()->put(['user'=> $user]);
-                return redirect('/top');
+
+                return redirect('/index');
+
             }
         }
         return view("auth.login");
