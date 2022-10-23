@@ -14,9 +14,9 @@
 <div>
   @foreach($search_users as $search_user)
    <div>
-   <p> <img src='images/{{$search_user->image}}'>{{$search_user->username}}</p>
+     <p> <img src='images/{{$search_user->image}}'>{{$search_user->username}}</p>
 
-   </div>
+  </div>
   @endforeach
 </div>
 

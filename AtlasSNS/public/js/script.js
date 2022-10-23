@@ -1,13 +1,23 @@
 
 $(function () {
 
-  $('#js-open').on('click', function () {
-    $('#js-modal').addClass('active');
-    $('#js-overlay').addClass('active');
+  $(document).on('click', '#js_open', function () {
+    $('#js_modal').fadeIn();
+    $('#js_overlay').fadeIn();
+
+    var post = $(this).data('post');
+    var id = $(this).data('id');
+
+    $('.modal_post').text(post);
+    $('.modal_id').val(id);
+    return false;
   });
 
-  $('#js-close').on('click', function () {
-    $('#js-modal').removeClass('active');
-    $('#js-overlay').removeClass('active');
-  })
-};
+
+  $('#js_close').on('click', function () {
+    $('#js_modal').removeClass('active');
+    $('#js_overlay').removeClass('active');
+    return false;
+  });
+
+});

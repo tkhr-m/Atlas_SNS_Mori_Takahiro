@@ -9,12 +9,22 @@
   </form>
 </div>
 <div>
-  @foreach($other_users as $another_user)
+  @foreach($other_users as $other_user)
   <div>
-    <p><img src="images/{{$another_user->image}}">{{$another_user->username}}</p>
+    <figure><img src="images/{{$other_user->image}}"></figure>
+    <div>
+      <p>{{$other_user->username}}</p>
+      <div>
+        @if(count($user->follow->following_id)>=1)
+        <button type="button" class="btn btn-primary">フォロー解除</button>
+        @else
+        <button type="button" class="btn btn-danger">フォローする</button>
+        @endif
+      </div>
+    </div>
   </div>
   @endforeach
-</div>
+</?div>
 
 
 

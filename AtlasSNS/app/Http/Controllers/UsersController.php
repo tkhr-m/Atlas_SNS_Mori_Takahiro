@@ -32,7 +32,7 @@ class UsersController extends Controller
 
     }
 
-    public function un_follow()
+    public function unfollow()
     {
 
     }
