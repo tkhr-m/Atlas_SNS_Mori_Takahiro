@@ -5,7 +5,7 @@
 {{-- 投稿 --}}
 <div class ="posting_block">
   <div>
-    <figure><img src = "images/{{$user->image}}"></figure>
+    <figure><img src = "images/{{Auth::user()->image}}"></figure>
     <form action = '/index/store' method = 'post'>
       @csrf
       <textarea type = 'text' name = 'tweet' maxlength = '150' placeholder = '投稿内容を入力して下さい。' required></textarea>
@@ -18,12 +18,12 @@
 
 <div>
   <ul>
-    @foreach($user->posts as $post)
+    @foreach(Auth::user()->posts as $post)
     <li class = "posted_block">
-      <figure><img src = "images/{{$user->image}}"></figure>
+      <figure><img src = "images/{{Auth::user()->image}}"></figure>
       <div class = "posted_content">
         <div>
-          <p class = "posted_name">{{$user->username}}</p>
+          <p class = "posted_name">{{Auth::user()->username}}</p>
           <p>{{$post->updated_at}}</p>
         </div>
         <div>{{$post->post}}</div>

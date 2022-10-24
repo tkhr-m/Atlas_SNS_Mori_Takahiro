@@ -31,11 +31,22 @@ class User extends Authenticatable
         return $this->hasMany('App\Post');
     }
 
+//リレーション　多対多
+
     public function follow(){
-        return $this->belongsToMany('App\User','follows','following_id','followed_id');
+        return $this->belongsToMany(User::class,'follows','following_id','followed_id');
     }
 
     public function followed(){
-        return $this->belongsToMany('App\User','follows','followed_id','following_id');
+        return $this->belongsToMany(User::class,'follows','followed_id','following_id');
     }
+
+
+//フォロー関連機能
+  //フォローしているか、していないか
+    public function isFollowing($user_id) {
+        return $this->follow()->where('followed_id',$user_id)->first();
+    }
+
+
 }

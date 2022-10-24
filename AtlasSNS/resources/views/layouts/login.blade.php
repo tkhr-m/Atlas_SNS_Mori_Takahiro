@@ -26,8 +26,8 @@
             <h1><a href = /index><img src="images/atlas.png"></a></h1>
             <div class ="head_content">
                 <div class = "user">
-                    <p class = "user_name">{{$user->username}}さん</p>
-                    <p><img src="images/{{$user->image}}"></p>
+                    <p class = "user_name">{{Auth::user()->username}}さん</p>
+                    <p><img src="images/{{Auth::user()->image}}"></p>
                 </div>
 
                 <div class = "menu_wrap" >
@@ -50,7 +50,7 @@
         </div >
         <div id="side_bar">
             <div id="confirm">
-                <p>{{$user->username}}さんの</p>
+                <p>{{Auth::user()->username}}さんの</p>
                 <div>
                 <p>フォロー数</p>
                 <p>〇〇名</p>

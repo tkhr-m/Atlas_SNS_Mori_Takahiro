@@ -15,16 +15,26 @@
     <div>
       <p>{{$other_user->username}}</p>
       <div>
-        @if(count($user->follow->following_id)>=1)
-        <button type="button" class="btn btn-primary">フォロー解除</button>
+
+        @if(Auth::user()->isFollowing($other_user->id))
+        <form action = '/search/unfollow' method = 'post'>
+          @csrf
+          <input type = 'hidden' name = 'followed_id' value = '{{$other_user->id}}'>
+          <button type="submit" class="btn btn-danger">フォロー解除</button>
+        </form>
         @else
-        <button type="button" class="btn btn-danger">フォローする</button>
+        <form action = '/search/follow' method = 'post'>
+          @csrf
+          <input type = 'hidden' name = 'followed_id' value = '{{$other_user->id}}'>
+          <button type="submit" class="btn btn-primary">フォローする</button>
+        </form>
         @endif
+
       </div>
     </div>
   </div>
   @endforeach
-</?div>
+</div>
 
 
 

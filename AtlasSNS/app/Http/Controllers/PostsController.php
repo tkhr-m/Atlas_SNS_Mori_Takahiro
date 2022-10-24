@@ -11,8 +11,7 @@ class PostsController extends Controller
 {
     //
     public function index(Request $request){
-        $user = Auth::user();
-        return view('posts.index',['user' => $user]);
+        return view('posts.index');
     }
 
     public function store(Request $request){

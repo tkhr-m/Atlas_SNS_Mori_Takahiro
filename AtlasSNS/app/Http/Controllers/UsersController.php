@@ -15,25 +15,23 @@ class UsersController extends Controller
         return view('users.profile');
     }
     public function search(){
-        $user = Auth::user();
         $other_users = User::where('id','!=',Auth::id())->get();
-        return view('users.search',['user'=>$user,'other_users'=>$other_users]);
+        return view('users.search',['other_users'=>$other_users]);
     }
 
     public function searchResult(Request $request){
-        $user = Auth::user();
         $search_word = $request->search;
         $search_users = User::Where('username','like','%'.$search_word.'%')->get();
-        return view('users.search_result',['user'=>$user,'search_word'=>$search_word,'search_users'=>$search_users]);
+        return view('users.search_result',['search_word'=>$search_word,'search_users'=>$search_users]);
     }
 
-    public function follow()
-    {
-
+    public function follow(Request $request){
+        Auth::user()->follow()->attach($request->followed_id);
+        return redirect ('/search');
     }
 
-    public function unfollow()
-    {
-
+    public function unfollow(Request $request){
+        Auth::user()->follow()->detach($request->followed_id);
+        return redirect('/search');
     }
 }
