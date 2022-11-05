@@ -2,101 +2,280 @@
 
 html {
     font-size: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-size: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 
 
+/* login.blade */
 /* header */
-header {
+.header {
     background: #186AC9;
-}
-
-#head {
     display: flex;
     justify-content: space-between;
+    height: 90px;
 }
 
-.user {
+.page_icon {
+    margin-top: 25px;
+    margin-left: 30px;
+}
+
+.header figure a img {
+    height: 40px;
+}
+
+.header_content {
+    width: 19.5%;
+    z-index: 1;
+}
+
+
+.content_block {
     display: flex;
-    flex-wrap: nowrap;
-    align-items: flex-end;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.name_block {
+    font-size: 19px;
+    font-weight: bold;
+    color: #fff;
+
+}
+
+.content_block div:last-child {
+    display: flex;
 }
 
 
 
+.user_name {
+    padding-top: 30px;
+}
 
-.user_name::after {
-    content: '';
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-top: 1px solid #fff;
-    border-right: 1px solid #fff;
+.arrow_block {
+    display: flex;
+    position: relative;
+    margin-right: 30px
+}
+
+.accordion_arrow {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    display: block;
+    width: 13px;
+    height: 13px;
+    border-top: 3px solid #fff;
+    border-right: 3px solid #fff;
+    transform: translate(-50%, -50%);
     transform: rotate(135deg);
 }
 
-.btn {
-    width: 100px;
-    height: 20px;
-    border-radius: 5px;
-    background-color: #186AC9;
-    text-align: center;
-    font-size: 0.5rem;
-    margin: 20px auto;
+.accordion_arrow.active {
+    transform: rotate(-45deg);
 }
 
-.btn a {
-    font-weight: thin;
+.menu_block {
+    list-style: none;
+    border: 2px solid #186AC9;
+    display: none;
+
+}
+
+
+.menu_block li:not(:last-child) {
+    border-bottom: 1px solid gainsboro;
+}
+
+.menu_block li {
+    text-align: center;
+    font-size: 20px;
+    background-color: #fff;
+}
+
+.menu_block li:hover {
+    background-color: #186AC9;
+}
+
+.menu_block li a {
+    display: block;
+    color: gainsboro;
+    padding: 33px 0;
+}
+
+.menu_block li a:hover {
     color: #fff;
 }
 
-#side_bar #confirm .btn {
-    margin: 0 0 0 auto;
+
+
+
+.row {
+    height: 100%;
 }
 
+.container {
+    flex: 0 0 80%;
 
+}
 
+.side_bar {
+    flex: 0 0 20%;
+    border-left: 1px solid gainsboro;
+    height: 100%;
+}
 
+.side_bar_content {
+    border-bottom: 1px solid gainsboro;
+    padding-bottom: 10px;
+}
 
+.side_bar_content>p {
+    margin-top: 20px;
+}
+
+.side_bar_content button {
+    border-radius: 9px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
+
+.side_bar_content button a {
+    font-size: 12px;
+    color: #fff;
+}
+
+.side_bar_item {
+    display: flex;
+}
+
+.side_bar_item>p {
+    margin-top: 20px;
+    margin-right: 25px;
+}
+
+.search_btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+
+}
+
+.search_btn button {
+    border-radius: 9px;
+}
+
+.search_btn a {
+    color: #fff;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.list_btn,
+.follower_btn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.list_btn a {
+    margin-left: 9px;
+    margin-right: 9px;
+}
+
+.follower_btn a {
+    padding-left: 5px;
+    padding-right: 5px;
+}
 
 /* main content */
-#row {
+/* index.blade */
+
+
+.posting_block {
+    border-bottom: 5px solid gainsboro;
     display: flex;
-    flex-flow: row wrap;
+    padding-top: 3%;
+    padding-bottom: 2%;
 }
 
-#container {
-    flex: 0 0 80%;
+.posting_block figure {
+    margin-left: 10%;
 }
-
-#side_bar {
-    flex: 0 0 19%;
-    border-left: 1px solid #727272;
-}
-
 
 
 .posting_block form textarea {
     resize: none;
-    width: 80%;
+    width: 70%;
     height: 20%;
     border: none;
 }
 
-li {
-    list-style: none;
-    border-bottom: solid 1px;
+.posting_block form {
+    width: 90%;
+    margin-left: 2%;
+}
+
+.input_area {
     display: flex;
 }
+
+.input_area textarea::placeholder {
+    font-size: 20px;
+    color: gainsboro;
+}
+
+.posted_block {
+    list-style: none;
+    border-bottom: solid 1px gainsboro;
+    display: flex;
+    padding-top: 2%;
+    padding-bottom: 1%;
+    margin-right: 1%;
+}
+
+.posted_block figure {
+    margin-left: 15%;
+    margin-right: 1%;
+}
+
 
 .posted_content {
     width: 100%;
-    padding: 15px;
 }
 
-.posted_content>div {
+
+
+.posted_item {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 1%;
+}
+
+.posted_date {
+    font-size: 12px;
+    color: grey;
+}
+
+.posted_edit {
+    display: flex;
+    margin-top: 2%;
+    justify-content: flex-end;
+}
+
+.posted_edit a {
+    margin-right: 1%;
+    margin-left: 99%;
 }
 
 .modal_open img {
@@ -114,10 +293,12 @@ li {
     background: grey;
     opacity: .5;
     display: none;
+    z-index: 2;
 }
 
 .overlay.active {
     display: block;
+    z-index: 2;
 }
 
 .modal {
@@ -130,6 +311,7 @@ li {
     background: #fff;
     border-radius: 10px;
     display: none;
+    z-index: 2;
 }
 
 .modal_post {
@@ -140,6 +322,7 @@ li {
     transform: translate(-50%, -50%);
     width: 90%;
     height: 60%;
+    padding: 2%;
 }
 
 .edit_submit {
@@ -152,10 +335,324 @@ li {
 
 .modal.active {
     display: block;
+    z-index: 2;
 }
 
 .modal_open .edit {
     display: block;
     width: 30px;
     height: 30px;
+}
+
+/* search.blade  search_result.blade*/
+
+.search_block {
+    display: flex;
+    border-bottom: 5px solid gainsboro;
+    height: 21%;
+}
+
+.search_block p {
+    font-size: 25px;
+    margin-top: 5%;
+}
+
+
+.search_block form {
+    display: flex;
+    width: 60%;
+}
+
+.search_block input {
+    width: 47%;
+    height: 35%;
+    margin-left: 10%;
+    margin-right: 3%;
+    margin-top: 7%;
+    padding-left: 3%;
+    border: 2px solid gainsboro;
+    border-radius: 5px;
+}
+
+.search_block input::placeholder {
+    font-size: 20px;
+}
+
+.search_block button {
+    background-color: #186AC9;
+    border: 1px solid #186AC9;
+    border-radius: 5px;
+    width: 7%;
+    height: 35%;
+    margin-top: 7%;
+    font-size: 30px;
+}
+
+.user_block {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 10px;
+
+}
+
+
+.user_icon {
+    width: 45px;
+    height: 45px;
+}
+
+
+.user_content {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+
+}
+
+.user_content button {
+    font-size: 12px;
+}
+
+.user_content p,
+.user-content form {
+    padding: 15px 15px 15px 20px;
+}
+
+.user_content button {
+    padding: 6px 20px;
+    border-radius: 9px;
+}
+
+.follow_btn button {
+    padding: 10px 30px;
+}
+
+/* followList.blade  followerList.blade */
+
+.icon_block {
+    border-bottom: solid 5px gainsboro;
+    list-style: none;
+    width: 100%;
+    height: 20%;
+    padding-left: 5%;
+}
+
+.icon_content {
+    display: flex;
+}
+
+.icon_content p {
+    font-size: 25px;
+    width: 20%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.list_icon {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 30px;
+    margin-top: 15px;
+}
+
+.list_icon input {
+    width: 40px;
+    height: 40px;
+    margin: 3px;
+}
+
+
+
+.followee_icon img {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+}
+
+.post_block {
+    padding-top: 2%;
+    padding-left: 10%;
+    padding-bottom: 2%;
+    border-bottom: 1px solid gainsboro;
+    list-style: none;
+    display: flex;
+}
+
+.post_block form {
+    display: inline-block;
+}
+
+.post_block input {
+    width: 40px;
+    height: 40px;
+    margin-left: 50px;
+    margin-right: 20px;
+}
+
+.post_content {
+    width: 100%;
+    list-style: none;
+}
+
+.post_content>div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}
+
+.post_content>div>p {
+    margin-bottom: 8px;
+}
+
+.post_content>div>p:first-child {
+    font-size: 14px;
+}
+
+
+/* profile.blade */
+
+.profile_block {
+    display: flex;
+    height: 45%;
+    border-bottom: 5px solid gainsboro;
+    align-items: center;
+    height: 20%;
+}
+
+.profile_block figure {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.profile_content {
+    width: 75%;
+
+}
+
+.profile_content p {
+    font-size: 18px;
+}
+
+.item_name {
+    margin-bottom: 20px;
+}
+
+.item_name,
+.item_bio {
+    display: flex;
+
+}
+
+.item_name p:first-child,
+.item_bio p:first-child {
+    padding: 5px 0 0 20px;
+}
+
+.item_name p:nth-child(2) {
+    margin-left: 17%;
+    padding-top: 5px;
+    font-size: 20px;
+
+}
+
+.item_bio p:nth-child(2) {
+    font-size: 20px;
+    margin-left: 19.5%;
+    padding-top: 5px
+}
+
+.profile_follow_btn {
+    display: flex;
+    align-items: flex-end;
+
+
+}
+
+.profile_follow_btn button {
+    padding: 10px 30px;
+    border-radius: 9px;
+    font-size: 12px;
+    margin-top: 40%;
+}
+
+/* profile_edit.blade */
+
+.edit_block {
+    display: flex;
+    height: 100%;
+}
+
+.edit_block figure {
+    margin-top: 4%;
+    margin-left: 20%;
+    margin-right: 1%;
+    width: 10%;
+}
+
+.edit_block img {
+    width: 65%;
+}
+
+.edit_form {
+    width: 100%;
+    height: 100%;
+}
+
+form {
+    width: 100%;
+    height: 100%;
+}
+
+
+.form_item {
+    display: flex;
+    height: 6%;
+    width: 100%;
+    margin-top: 5%;
+}
+
+.form_item input {
+    width: 45%;
+    background-color: gainsboro;
+    border: 1px solid grey;
+    font-size: 20px;
+}
+
+.form_item p {
+    width: 30%;
+    font-size: 22px;
+    margin-top: 2%;
+}
+
+.image_form input {
+    display: none;
+    width: 45%;
+}
+
+.image_form>label {
+    background-color: gainsboro;
+    padding: 10px 40px;
+    border: 1px solid grey;
+    width: 45%;
+}
+
+.image_form span {
+    display: inline-block;
+    background-color: #fff;
+    color: grey;
+    padding: 4% 20%;
+    margin-left: 11%;
+    margin-top: 9%;
+
+}
+
+.form_item.image_form {
+    height: 15%;
+}
+
+.form_item button {
+    font-size: 20px;
+    margin-left: 20%;
+    width: 22%;
 }

@@ -1,10 +1,99 @@
 @charset "UTF-8";
 
-html{
+html {
     height: 100%;
 }
 
-body{
+body {
     height: 100%;
     background: #186AC9;
+}
+
+.gradient {
+    background: linear-gradient(#1e90ff, 80%, #F9FF57);
+}
+
+.site_logo {
+    width: 30%;
+    text-align: center;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.site_logo p {
+    font-size: 33px;
+    color: #fff;
+}
+
+.logout_icon {
+    width: 35%;
+}
+
+
+#container {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(77, 81, 79, .4);
+    border-radius: 10px;
+    width: 22%;
+    height: 51%;
+}
+
+
+
+#container p {
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+}
+
+#container p:last-child {
+    font-size: 15px;
+}
+
+#container p:not(:last-child) {
+    margin-top: 12%;
+}
+
+#container p a {
+    color: #fff;
+}
+
+
+
+input {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: 45px;
+    border-radius: 10px;
+    margin-top: 2%;
+}
+
+#container label {
+    color: #fff;
+    font-size: 13px;
+    margin-top: 12%;
+}
+
+.login_form {
+    position: relative;
+    width: 85%;
+    height: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 10%;
+}
+
+button {
+    width: 45%;
+    position: absolute;
+    left: 77%;
+    top: 87%;
+
+    transform: translate(-50%, -50%);
 }

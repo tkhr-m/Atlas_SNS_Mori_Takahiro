@@ -1,39 +1,44 @@
 @extends('layouts.login')
 
 @section('content')
-<div>
+<div class = 'search_block'>
   <form action = '/search' method = 'post'>
     @csrf
     <input type = 'text' name = 'search' placeholder = 'ユーザー名' required>
-    <input type = 'submit' value = '検索'>
+    <button type = 'submit'><i class="fa-solid fa-magnifying-glass" style = 'color:#fff'></i></button>
   </form>
 </div>
+
+
+
 <div>
-  @foreach($other_users as $other_user)
-  <div>
-    <figure><img src="images/{{$other_user->image}}"></figure>
-    <div>
-      <p>{{$other_user->username}}</p>
-      <div>
-
-        @if(Auth::user()->isFollowing($other_user->id))
-        <form action = '/search/unfollow' method = 'post'>
-          @csrf
-          <input type = 'hidden' name = 'followed_id' value = '{{$other_user->id}}'>
-          <button type="submit" class="btn btn-danger">フォロー解除</button>
-        </form>
-        @else
-        <form action = '/search/follow' method = 'post'>
-          @csrf
-          <input type = 'hidden' name = 'followed_id' value = '{{$other_user->id}}'>
-          <button type="submit" class="btn btn-primary">フォローする</button>
-        </form>
-        @endif
-
+  <ul>
+    @foreach($other_users as $other_user)
+    <li class = 'user_block'>
+      <figure>
+        <img class = 'user_icon' src="{{$other_user->image}}" alt = 'ユーザーアイコン'>
+      </figure>
+      <div class = 'user_content'>
+        <p>{{$other_user->username}}</p>
+        <div class ='follow_btn'>
+          @if(Auth::user()->isFollowing($other_user->id))
+          <form action = '/search/unfollow' method = 'post'>
+            @csrf
+            <input type = 'hidden' name = 'followed_id' value = '{{$other_user->id}}'>
+            <button type="submit" class="btn btn-danger btn-sm">フォロー解除</button>
+          </form>
+          @else
+          <form action = '/search/follow' method = 'post'>
+            @csrf
+            <input type = 'hidden' name = 'followed_id' value = '{{$other_user->id}}'>
+            <button type="submit" class="btn btn-info btn-sm">フォローする</button>
+          </form>
+          @endif
+        </div>
       </div>
-    </div>
-  </div>
-  @endforeach
+    </li>
+    @endforeach
+  </ul>
 </div>
 
 

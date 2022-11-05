@@ -2,19 +2,31 @@
 
 @section('content')
 
-{{ Form::open(['url' => '/login', 'method' => 'post']) }}
+<div class = 'login_form'>
+<form action = '/login' method = 'post'>
+@csrf
 
 <p>AtlasSNSへようこそ</p>
+@error('mail')
+<p>{{$message}}</p>
+@enderror
+<label for = 'email'><p>mail address</p></label>
+<input type = 'text' name = 'mail' id = 'email' value = ''>
+@error('password')
+<p>{{$message}}</p>
+@enderror
+<label for = 'pass'><p>password</p></label>
+<input type = 'password' name = 'password' id = 'pass' value = ''>
+<button class = 'btn btn-danger' type = 'submit'>LOGIN</button>
 
-{{ Form::label('e-mail') }}
-{{ Form::text('mail',null,['class' => 'input']) }}
-{{ Form::label('password') }}
-{{ Form::password('password',['class' => 'input']) }}
 
-{{ Form::submit('ログイン') }}
+</form>
+</div>
 
 <p><a href="/register">新規ユーザーの方はこちら</a></p>
 
-{{ Form::close() }}
+
+
+
 
 @endsection

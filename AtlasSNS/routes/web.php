@@ -39,14 +39,19 @@ Route::post('/index/store','PostsController@store');
 Route::post('/index/update','PostsController@update');
 Route::post('/index/delete','PostsController@delete');
 
-Route::get('/profile','UsersController@profile');
-
 Route::get('/search','UsersController@search');
 Route::post('/search','UsersController@searchResult');
 
 Route::post('/search/follow','UsersController@follow');
 Route::post('/search/unfollow','UsersController@unfollow');
 
-Route::get('/follow-list','FollowsController@followList');
-Route::get('/follower-list','FollowsController@followerList');
+Route::get('/profile','UsersController@profileEdit');
+Route::post('/profile/update','UsersController@profileUpdate');
+Route::post('/profile','UsersController@profile');
+
+
+Route::get('/follow_list','FollowsController@followList');
+Route::get('/follower_list','FollowsController@followerList');
+
+
 });

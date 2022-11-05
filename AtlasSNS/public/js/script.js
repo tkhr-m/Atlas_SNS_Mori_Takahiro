@@ -1,9 +1,9 @@
 
 $(function () {
 
-  $(document).on('click', '#js_open', function () {
-    $('#js_modal').fadeIn();
-    $('#js_overlay').fadeIn();
+  $('#jsOpen').on('click', function () {
+    $('#jsModal').fadeIn();
+    $('#jsOverlay').fadeIn();
 
     var post = $(this).data('post');
     var id = $(this).data('id');
@@ -11,13 +11,21 @@ $(function () {
     $('.modal_post').text(post);
     $('.modal_id').val(id);
     return false;
+
   });
 
 
-  $('#js_close').on('click', function () {
-    $('#js_modal').removeClass('active');
-    $('#js_overlay').removeClass('active');
+  $('#jsClose').on('click', function () {
+    $('#jsModal').removeClass('active');
+    $('#jsOverlay').removeClass('active');
+  });
+
+});
+
+$(function () {
+  $('.accordion_arrow').on('click', function () {
+    $(this).toggleClass('active');
+    $('.menu_block').slideToggle();
     return false;
   });
-
 });

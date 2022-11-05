@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 use App\Post;
 use App\Follow;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +12,11 @@ class PostsController extends Controller
 {
     //
     public function index(Request $request){
-        return view('posts.index');
+        $my_id = Auth::id();
+        $followee_id = Auth::user()->follow()->pluck('followed_id');
+        $followee_id[] = $my_id;
+        $posts = Post::with('user')->whereIn('user_id',$followee_id)->get();
+        return view('posts.index',['posts' => $posts]);
     }
 
     public function store(Request $request){

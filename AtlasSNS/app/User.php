@@ -14,8 +14,8 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'username', 'mail', 'password',
+    protected $guarded = [
+        'id'
     ];
 
     /**
@@ -45,8 +45,20 @@ class User extends Authenticatable
 //フォロー関連機能
   //フォローしているか、していないか
     public function isFollowing($user_id) {
-        return $this->follow()->where('followed_id',$user_id)->first();
+        return (bool) $this->follow()->where('followed_id',$user_id)->first();
+    }
+  //フォローされているか、されていないか
+    public function isFollowed($user_id){
+        return (bool) $this->followed()->where('following_id',$user_id)->first();
     }
 
+  //フォロー数
+    public function followee(){
+        return $this->follow()->get();
+    }
+  //フォロワー数
+    public function follower(){
+        return $this->followed()->get();
+    }
 
 }
