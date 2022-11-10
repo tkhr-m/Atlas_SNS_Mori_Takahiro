@@ -81,14 +81,29 @@ class RegisterController extends Controller
 
         if($request->isMethod('post')){
 
+            $massages = [
+                'username.required' => '入力必須項目です。',
+                'username.string' => '文字を入力して下さい。',
+                'username.between' => '2~12文字で入力して下さい。',
+                'mail.required' => '入力必須項目です。',
+                'mail.email' => 'メール形式で入力して下さい。',
+                'mail.between' => '5~40の間でで入力して下さい。',
+                'mail.unique' => 'このアドレスはすでに使われています。',
+                'password.required' => '入力必須項目です。',
+                'password.between' => '8~20の間でで入力して下さい。',
+                'password.confirmed' => 'パスワードが一致しません。',
+                'password.alpha-num' => '英数字で入力して下さい。',
+            ];
+
           $validator = Validator::make($request->all(),[
 
             'username' => 'required|string|between:2,12',
             'mail' => 'required|email|between:5,40|unique:users,mail',
-            'password' => 'required|string|between:8,20|confirmed|alpha-num',
-            ]);
+            'password' => 'required|between:8,20|confirmed|alpha-num',
+            ],$massages);
         if($validator->fails()){
-            return redirect('/login');
+            return redirect('/register')
+            ->withErrors($validator);
         }
 
             $name = $request->username;

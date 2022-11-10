@@ -17,7 +17,7 @@ body {
     width: 30%;
     text-align: center;
     position: absolute;
-    top: 30%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -32,9 +32,9 @@ body {
 }
 
 
-#container {
+.login_wrap {
     position: absolute;
-    top: 70%;
+    top: 58%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(77, 81, 79, .4);
@@ -45,21 +45,21 @@ body {
 
 
 
-#container p {
+.login_wrap p {
     color: #fff;
     font-size: 18px;
     text-align: center;
 }
 
-#container p:last-child {
+.login_wrap p:last-child {
     font-size: 15px;
 }
 
-#container p:not(:last-child) {
+.login_wrap p:not(:last-child) {
     margin-top: 12%;
 }
 
-#container p a {
+.login_wrap p a {
     color: #fff;
 }
 
@@ -74,10 +74,10 @@ input {
     margin-top: 2%;
 }
 
-#container label {
+.login_wrap label {
     color: #fff;
     font-size: 13px;
-    margin-top: 12%;
+    margin-top: 11%;
 }
 
 .login_form {
@@ -93,7 +93,149 @@ button {
     width: 45%;
     position: absolute;
     left: 77%;
-    top: 87%;
+    top: 92%;
 
     transform: translate(-50%, -50%);
+}
+
+#errorMessage {
+    color: red;
+    font-size: 14px;
+}
+
+/* register.blade */
+.register_wrap {
+    position: absolute;
+    top: 63%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(77, 81, 79, .4);
+    border-radius: 10px;
+    width: 22%;
+    height: 70%;
+}
+
+
+
+.register_wrap p {
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+}
+
+.register_wrap p:last-child {
+    font-size: 15px;
+}
+
+.register_wrap p:not(:last-child) {
+    margin-top: 9%;
+}
+
+.register_wrap p a {
+    color: #fff;
+}
+
+
+
+.register_wrap label {
+    color: #fff;
+    font-size: px;
+    margin-top: 7%;
+}
+
+.register_form {
+    position: relative;
+    width: 85%;
+    height: 75%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 17%;
+}
+
+.register_form button {
+    width: 50%;
+    position: absolute;
+    left: 74%;
+    top: 100%;
+    transform: translate(-50%, -50%);
+}
+
+.back_to_login a {
+    font-size: 20px;
+}
+
+
+
+/* added.blade */
+#clear {
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(77, 81, 79, .4);
+    border-radius: 10px;
+    width: 22%;
+    height: 40%;
+}
+
+
+#clear p {
+    color: #fff;
+}
+
+#clear p:nth-child(1),
+#clear p:nth-child(2) {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#clear p:nth-child(3),
+#clear p:nth-child(4) {
+    font-size: 17px;
+}
+
+#clear p:nth-child(1) {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#clear p:nth-child(2) {
+    position: absolute;
+    width: 80%;
+    top: 25%;
+    left: 62%;
+    transform: translate(-50%, -50%);
+}
+
+#clear p:nth-child(3) {
+    position: absolute;
+    width: 80%;
+    top: 45%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+}
+
+#clear p:nth-child(4) {
+    position: absolute;
+    width: 80%;
+    top: 55%;
+    left: 54%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+#clear button {
+    position: relative;
+    left: 50%;
+    top: 75%;
+    color: #fff;
+    font-size: 15px;
+    width: 45%;
+    text-align: center;
+    padding: 3% 3%;
+    border-radius: 10px;
+    font-size: 16px;
 }

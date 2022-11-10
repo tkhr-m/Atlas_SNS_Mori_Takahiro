@@ -1,7 +1,7 @@
 @extends('layouts.logout')
 
 @section('content')
-
+<div class = "login_wrap">
 <div class = 'login_form'>
 <form action = '/login' method = 'post'>
 @csrf
@@ -24,6 +24,7 @@
 </div>
 
 <p><a href="/register">新規ユーザーの方はこちら</a></p>
+</div>
 
 
 

@@ -40,8 +40,9 @@ class UsersController extends Controller
         }else{
             Auth::user()->follow()->attach($request->followed_id);
         }
-        $user_profile = User::with('posts')->whereIn('id',[$request->profile_id,$request->followed_id])->first();
-        return view('users.profile',['user_profile' => $user_profile]);
+        $user_profile = User::whereIn('id',[$request->profile_id,$request->followed_id])->first();
+        $user_post = Post::whereIn('user_id',[$request->profile_id,$request->followed_id])->orderBy('updated_at','desc')->get();
+        return view('users.profile',['user_profile' => $user_profile,'user_post' => $user_post]);
     }
 
     public function profileEdit(Request $request){
@@ -51,15 +52,31 @@ class UsersController extends Controller
     public function profileUpdate(Request $request){
 
     //バリデーション
+        $messages = [
+                'profile_name.required' => '入力必須項目です。',
+                'profile_name.between' => '2~12文字で入力して下さい。',
+                'profile_mail.required' => '入力必須項目です。',
+                'profile_mail.email' => 'メール形式で入力して下さい。',
+                'profile_mail.between' => '5~40の間でで入力して下さい。',
+                'profile_mail.unique' => 'このアドレスはすでに使われています。',
+                'profile_password.required' => '入力必須項目です。',
+                'profile_password.alpha-num' => '英数字で入力して下さい。',
+                'profile_password.between' => '8~20の間でで入力して下さい。',
+                'profile_password.confirmed' => 'パスワードが一致しません。',
+                'profile_bio.max' => '150以内で入力して下さい。',
+                'profile_image.alpha-num' => 'ファイル名は英数字にして下さい。',
+                'profile_image.confirmed' => '画像ファイルを選択して下さい。',
+            ];
         $validator = Validator::make($request->all(),[
             'profile_name' => ['required','between:2,12'],
             'profile_mail' => ['required','between:5,40','email','unique:users,mail,'.$request->profile_id.',id'],
             'profile_password' => ['required','alpha-num','between:8,20','confirmed'],
             'profile_bio' => ['max:150'],
-            'profile_image' => ['file','mimes:jpg,png,bmp,gif,svg'],
-        ]);
+            'profile_image' => ['alpha-num','mimes:jpg,png,bmp,gif,svg'],
+        ],$messages);
         if($validator->fails()){
-            return redirect('/profile');
+            return redirect('/profile')
+            ->withErrors($validator);
         }
     //画像処理
        if($request->profile_image != null){

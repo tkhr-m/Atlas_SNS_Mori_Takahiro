@@ -2,27 +2,42 @@
 
 @section('content')
 
-{{ Form::open(['url' => '/register' , 'method' => 'post']) }}
+<div class = "register_wrap">
+    <div class = 'register_form'>
+        <form action = '/register' method = 'post'>
+            @csrf
 
-<h2>新規ユーザー登録</h2>
+            <p>新規ユーザー登録</p>
 
-{{ Form::label('ユーザー名') }}
-{{ Form::text('username',null,['class' => 'input']) }}
 
-{{ Form::label('メールアドレス') }}
-{{ Form::text('mail',null,['class' => 'input']) }}
+            <label for = 'name'><p>user name</p></label>
+            @error('username')
+            <span id = 'errorMessage'>{{$message}}</span>
+            @enderror
+            <input type = 'text' name = 'username' id = 'name' value = ''>
 
-{{ Form::label('パスワード') }}
-{{ Form::text('password',null,['class' => 'input']) }}
+            <label for = 'email'><p>mail address</p></label>
+            @error('mail')
+            <span id = 'errorMessage'>{{$message}}</span>
+            @enderror
+            <input type = 'text' name = 'mail' id = 'email' value = ''>
 
-{{ Form::label('パスワード確認') }}
-{{ Form::text('password_confirmation',null,['class' => 'input']) }}
+            <label for = 'pass'><p>password</p></label>
+            @error('password')
+            <span id = 'errorMessage'>{{$message}}</span>
+            @enderror
+            <input type = 'password' name = 'password' id = 'pass' value = ''>
 
-{{ Form::submit('登録') }}
-
-<p><a href="/login">ログイン画面へ戻る</a></p>
-
-{{ Form::close() }}
+            <label for = 'confirm'><p>password confirm</p></label>
+             @error('password_confirmation')
+            <span id = 'errorMessage'>{{$message}}</span>
+            @enderror
+            <input type = 'password' name = 'password_confirmation' id = 'confirmation' value = ''>
+            <button class = 'btn btn-danger' type = 'submit'>REGISTER</button>
+        </form>
+    </div>
+        <p class = 'back_to_login'><a href="/login">ログイン画面に戻る</a></p>
+</div>
 
 
 @endsection

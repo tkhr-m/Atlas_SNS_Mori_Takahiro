@@ -9,27 +9,42 @@
     <form action = '/profile/update' method = 'post' enctype = 'multipart/form-data'>
       @csrf
       <input type = 'hidden' name = 'profile_id' value = '{{Auth::id()}}'>
-
+       @error('profile_name')
+            <span id = 'errorMessage'>{{$message}}</span>
+        @enderror
       <div class = 'form_item'>
         <p><label for = 'name'>user name</label></p>
-        <input type = 'text' name = 'profile_name' id = 'name' value = '{{Auth::user()->username}}' required>
+        <input type = 'text' name = 'profile_name' id = 'name' value = '{{Auth::user()->username}}'>
       </div>
+       @error('profile_mail')
+            <span id = 'errorMessage'>{{$message}}</span>
+        @enderror
       <div class = 'form_item'>
         <p><label for = 'mail'>mail address</label></p>
-        <input type = 'mail' name = 'profile_mail' id = 'mail' value = '{{Auth::user()->mail}}' required>
+        <input type = 'mail' name = 'profile_mail' id = 'mail' value = '{{Auth::user()->mail}}'d>
       </div>
+       @error('profile_password')
+            <span id = 'errorMessage'>{{$message}}</span>
+        @enderror
       <div class = 'form_item'>
         <p><label for = 'pass'>password</label></p>
-        <input type = 'password' name = 'profile_password' id = 'pass' value = '' required>
+        <input type = 'password' name = 'profile_password' id = 'pass' value = '' >
       </div>
+
       <div class = 'form_item'>
         <p><label for = 'confirm'>password confirm</label></p>
-        <input type = 'password' name = 'profile_password_confirmation' id = 'confirm' value = '' required>
+        <input type = 'password' name = 'profile_password_confirmation' id = 'confirm' value = ''>
       </div>
+       @error('profile_bio')
+            <span id = 'errorMessage'>{{$message}}</span>
+        @enderror
       <div class = 'form_item'>
         <p><label for = 'bio'>bio</label></p>
         <input type = 'text' name = 'profile_bio' id = 'bio' value = '{{Auth::user()->bio}}'>
       </div>
+       @error('profile_image')
+            <span id = 'errorMessage'>{{$message}}</span>
+        @enderror
       <div class = 'form_item image_form'>
         <p><label for = 'image'>icon image</label></p>
         <label for = 'image'>

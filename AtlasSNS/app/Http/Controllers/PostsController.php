@@ -15,7 +15,7 @@ class PostsController extends Controller
         $my_id = Auth::id();
         $followee_id = Auth::user()->follow()->pluck('followed_id');
         $followee_id[] = $my_id;
-        $posts = Post::with('user')->whereIn('user_id',$followee_id)->get();
+        $posts = Post::with('user')->whereIn('user_id',$followee_id)->orderBy('updated_at','desc')->get();
         return view('posts.index',['posts' => $posts]);
     }
 

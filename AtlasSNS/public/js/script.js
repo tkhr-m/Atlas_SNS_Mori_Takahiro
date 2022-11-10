@@ -1,7 +1,7 @@
 
 $(function () {
 
-  $('#jsOpen').on('click', function () {
+  $(document).on('click', '#jsOpen', function () {
     $('#jsModal').fadeIn();
     $('#jsOverlay').fadeIn();
 

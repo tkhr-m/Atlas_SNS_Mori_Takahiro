@@ -34,7 +34,7 @@
 
 <div>
   <ul>
-    @foreach($user_profile->posts as $post)
+    @foreach($user_post as $post)
     <li class = "posted_block">
       <figure>
         <img class = 'user_icon' src = '{{$user_profile->image}}' alt = 'ユーザーアイコン'>
