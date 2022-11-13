@@ -42,7 +42,7 @@
       <div class = "posted_content">
         <div class = 'posted_item'>
           <p>{{$user_profile->username}}</p>
-          <p class = "posted_date">{{$post->updated_at}}</p>
+          <p class = "posted_date">{{$post->created_at}}</p>
         </div>
         <div>{{$post->post}}</div>
       </div>

@@ -41,7 +41,7 @@ class UsersController extends Controller
             Auth::user()->follow()->attach($request->followed_id);
         }
         $user_profile = User::whereIn('id',[$request->profile_id,$request->followed_id])->first();
-        $user_post = Post::whereIn('user_id',[$request->profile_id,$request->followed_id])->orderBy('updated_at','desc')->get();
+        $user_post = Post::whereIn('user_id',[$request->profile_id,$request->followed_id])->orderBy('created_at','desc')->get();
         return view('users.profile',['user_profile' => $user_profile,'user_post' => $user_post]);
     }
 
@@ -64,7 +64,6 @@ class UsersController extends Controller
                 'profile_password.between' => '8~20の間でで入力して下さい。',
                 'profile_password.confirmed' => 'パスワードが一致しません。',
                 'profile_bio.max' => '150以内で入力して下さい。',
-                'profile_image.alpha-num' => 'ファイル名は英数字にして下さい。',
                 'profile_image.confirmed' => '画像ファイルを選択して下さい。',
             ];
         $validator = Validator::make($request->all(),[
@@ -72,7 +71,7 @@ class UsersController extends Controller
             'profile_mail' => ['required','between:5,40','email','unique:users,mail,'.$request->profile_id.',id'],
             'profile_password' => ['required','alpha-num','between:8,20','confirmed'],
             'profile_bio' => ['max:150'],
-            'profile_image' => ['alpha-num','mimes:jpg,png,bmp,gif,svg'],
+            'profile_image' => ['mimes:jpg,png,bmp,gif,svg'],
         ],$messages);
         if($validator->fails()){
             return redirect('/profile')
